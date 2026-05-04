@@ -59,7 +59,13 @@ fun LoanResultScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Resultados del Cálculo") },
+                title = {
+                    Text(
+                        "Resultados del Cálculo",
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontSize = 20.sp
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
@@ -69,8 +75,10 @@ fun LoanResultScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.White.copy(alpha = 0.95f)
-                )
+                    containerColor = Color.White,
+                    scrolledContainerColor = Color.White.copy(alpha = 0.98f)
+                ),
+                modifier = Modifier.padding(top = 8.dp)
             )
         }
     ) { innerPadding ->
@@ -84,7 +92,7 @@ fun LoanResultScreen(
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
                     .padding(innerPadding)
-                    .padding(16.dp),
+                    .padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -94,11 +102,11 @@ fun LoanResultScreen(
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 16.dp),
+                        .padding(vertical = 20.dp),
                     fontSize = 28.sp
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 // Contenedor centrado para la tarjeta
                 Box(
