@@ -32,6 +32,22 @@ fun LoanResultScreen(
         return "${currency.symbol} ${decimalFormat.format(amount)}"
     }
 
+    fun formatPeriod(totalMonths: Int): String {
+        return when {
+            totalMonths < 12 -> "$totalMonths meses"
+            totalMonths % 12 == 0 -> "${totalMonths / 12} años"
+            else -> "${totalMonths / 12} años y ${totalMonths % 12} meses"
+        }
+    }
+
+    fun formatMonthlyRate(rate: Double): String {
+        return String.format("%.2f%%", rate * 100)
+    }
+
+    fun formatCurrencyDisplay(currency: Currency): String {
+        return "${currency.displayName} (${currency.symbol})"
+    }
+
     // Degradado de fondo
     val gradientBrush = Brush.verticalGradient(
         colors = listOf(
@@ -110,7 +126,7 @@ fun LoanResultScreen(
                             // Moneda seleccionada
                             ResultRow(
                                 label = "Moneda",
-                                value = loanResult.currency.displayName,
+                                value = formatCurrencyDisplay(loanResult.currency),
                                 valueColor = MaterialTheme.colorScheme.primary,
                                 isHighlight = true
                             )
@@ -181,7 +197,7 @@ fun LoanResultScreen(
                             // Plazo
                             ResultRow(
                                 label = "Plazo",
-                                value = "${loanResult.totalMonths} meses (${loanResult.totalMonths / 12} años ${loanResult.totalMonths % 12} meses)"
+                                value = formatPeriod(loanResult.totalMonths)
                             )
 
                             HorizontalDivider()
@@ -189,7 +205,7 @@ fun LoanResultScreen(
                             // Tasa Mensual
                             ResultRow(
                                 label = "Tasa Mensual",
-                                value = String.format("%.4f%%", loanResult.monthlyRate * 100)
+                                value = formatMonthlyRate(loanResult.monthlyRate)
                             )
                         }
                     }
@@ -216,7 +232,7 @@ fun LoanResultScreen(
                         )
                     ) {
                         Text(
-                            "Calcular Otro Préstamo",
+                            "Nuevo cálculo",
                             fontSize = 16.sp,
                             style = MaterialTheme.typography.labelLarge
                         )

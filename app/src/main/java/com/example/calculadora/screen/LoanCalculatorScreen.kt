@@ -6,7 +6,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AttachMoney
+import androidx.compose.material.icons.filled.AccountBalance
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -63,10 +63,10 @@ fun LoanCalculatorScreen(
 
             // Ícono superior
             Icon(
-                imageVector = Icons.Filled.AttachMoney,
+                imageVector = Icons.Filled.AccountBalance,
                 contentDescription = "Calculadora de Préstamos",
                 modifier = Modifier
-                    .size(56.dp)
+                    .size(42.dp)
                     .padding(bottom = 8.dp),
                 tint = MaterialTheme.colorScheme.primary
             )
